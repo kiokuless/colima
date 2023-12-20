@@ -66,21 +66,24 @@ func IPAddress(profileID string) string {
 	return fallback
 }
 
+// NOTE: This is typed because of wails doesn't support annonymous struct...
+type NetWork struct {
+	VNL       string `json:"vnl,omitempty"`
+	Interface string `json:"interface,omitempty"`
+}
+
 // InstanceInfo is the information about a Lima instance
 type InstanceInfo struct {
-	Name    string `json:"name,omitempty"`
-	Status  string `json:"status,omitempty"`
-	Arch    string `json:"arch,omitempty"`
-	CPU     int    `json:"cpus,omitempty"`
-	Memory  int64  `json:"memory,omitempty"`
-	Disk    int64  `json:"disk,omitempty"`
-	Dir     string `json:"dir,omitempty"`
-	Network []struct {
-		VNL       string `json:"vnl,omitempty"`
-		Interface string `json:"interface,omitempty"`
-	} `json:"network,omitempty"`
-	IPAddress string `json:"address,omitempty"`
-	Runtime   string `json:"runtime,omitempty"`
+	Name      string    `json:"name,omitempty"`
+	Status    string    `json:"status,omitempty"`
+	Arch      string    `json:"arch,omitempty"`
+	CPU       int       `json:"cpus,omitempty"`
+	Memory    int64     `json:"memory,omitempty"`
+	Disk      int64     `json:"disk,omitempty"`
+	Dir       string    `json:"dir,omitempty"`
+	Network   []NetWork `json:"network,omitempty"`
+	IPAddress string    `json:"address,omitempty"`
+	Runtime   string    `json:"runtime,omitempty"`
 }
 
 // Running checks if the instance is running.
